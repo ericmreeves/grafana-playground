@@ -19,6 +19,10 @@ This is a little project I put together that lets you spin up a Grafana ecosyste
 
 <a href="./img/septa-regional-rail.png"><img src="./img/septa-regional-rail.png" align="right" width="300" /></a>
 
+- (OPTIONAL) The following 2 optional commands are only if you wish to have your local Docker container logs all sent into Loki.
+- (OPTIONAL) Run `docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions` to install the Loki Docker Driver.
+- (OPTIONAL) Run `cp docker-compose.override.yml.sample docker-compose.override.yml`
+- Run `chmod 777 data/*` to ensure all data folders are writeable by containers.
 - Run `docker-compose up` to start up the environment.
 - Go to http://localhost:3000/ and log into Grafana with login/pass of `admin/admin`.
 - [Create an API with Admin access](http://localhost:3000/org/apikeys)
