@@ -80,7 +80,7 @@ services:
   # Read logs from files and ingest into Loki.
   #
   promtail:
-    image: grafana/promtail:2.3.0
+    image: grafana/promtail:2.4.2
     volumes:
       - logs:/logs/
       - ./config:/mnt/config
@@ -96,7 +96,7 @@ services:
   # Telegraf reads system metrics, and will expose them to Prometheus and send them to Loki
   #
   telegraf:
-    image: telegraf:1.20
+    image: telegraf:1.22.1
     volumes:
       - ./config/telegraf.conf:/etc/telegraf/telegraf.conf
     restart: "always"
@@ -106,7 +106,7 @@ services:
   # The Loki database for storing logs.
   #
   loki:
-    image: grafana/loki:2.3.0
+    image: grafana/loki:2.4.2
     volumes:
       - ./config:/mnt/config
       - ./data/loki-data:/tmp/loki
@@ -120,7 +120,7 @@ services:
   # Prometheus
   #
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.34.0
     ports:
       - "9090:9090"
     volumes:
