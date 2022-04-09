@@ -17,15 +17,15 @@ This is a little project I put together that lets you spin up a Grafana ecosyste
 
 ## Getting Started
 
-<a href="./img/septa-regional-rail.png"><img src="./img/septa-regional-rail.png" align="right" width="300" /></a>
+<a href="./img/septa-regional-rail.png"><img src="./img/septa-regional-rail.png" align="center" width="300" /></a>
 
-- (OPTIONAL) The following 2 optional commands are only if you wish to have your local Docker container logs all sent into Loki.
-- (OPTIONAL) Run `docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions` to install the Loki Docker Driver.
-- (OPTIONAL) Run `cp docker-compose.override.yml.sample docker-compose.override.yml`
-- Run `chmod 777 data/*` to ensure all data folders are writeable by containers.
-- Run `docker-compose up` to start up the environment.
+- (OPTIONAL) The following 2 commands are only if you wish to have your local Docker container logs sent into Loki.
+  - `docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions`
+  - `cp docker-compose.override.yml.sample docker-compose.override.yml`
+- `chmod 777 data/*`
+- `docker-compose up`
 - Go to http://localhost:3000/ and log into Grafana with login/pass of `admin/admin`.
-- [Create an API with Admin access](http://localhost:3000/org/apikeys)
+- [Create an API key with Admin access](http://localhost:3000/org/apikeys)
 - Spawn a shell in the `tools` container and import the dashboards and data sources into Grafana
   - `docker-compose exec tools bash`
   - `cat /mnt/config/dashboards.json | /mnt/bin/manage-dashboards.py --import --api-key API_KEY`
